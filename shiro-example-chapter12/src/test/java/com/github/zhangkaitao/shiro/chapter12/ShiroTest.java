@@ -31,7 +31,7 @@ import javax.sql.DataSource;
 @ContextConfiguration(locations = {"classpath:spring-beans.xml", "classpath:spring-shiro.xml"})
 @TransactionConfiguration(defaultRollback = false)
 public class ShiroTest {
-
+ 
     @Autowired
     protected PermissionService permissionService;
     @Autowired
@@ -122,9 +122,11 @@ public class ShiroTest {
         token = new UsernamePasswordToken(u1.getUsername(), password + "1");
         subject.login(token);
 
-
+        userRealm.clearCache(subject.getPrincipals());
 
 
     }
+    
+     
 
 }

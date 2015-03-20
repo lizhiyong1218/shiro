@@ -1,16 +1,15 @@
 package com.github.zhangkaitao.shiro.chapter5.hash.credentials;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Ehcache;
 import net.sf.ehcache.Element;
+
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
-import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-
-import javax.security.auth.login.AccountLockedException;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * <p>User: Zhang Kaitao

@@ -22,7 +22,15 @@ import java.io.IOException;
 @WebServlet(name = "loginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
 
-    @Override
+    /**
+	 * serialVersionUID:TODO（用一句话描述这个变量表示什么）
+	 *
+	 * @since 1.0.0
+	 */
+	
+	private static final long serialVersionUID = -8404877654040771481L;
+
+	@Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
     }

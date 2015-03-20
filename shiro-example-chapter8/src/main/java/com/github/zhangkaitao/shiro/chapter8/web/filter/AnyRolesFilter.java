@@ -10,9 +10,17 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * <p>User: Zhang Kaitao
- * <p>Date: 14-2-4
- * <p>Version: 1.0
+ * 
+* @ClassName: AnyRolesFilter
+* @Description:   
+	          流程：
+	    1、首先判断用户有没有任意角色，如果没有返回false，将到onAccessDenied 进行处理；
+	    2、如果用户没有角色，接着判断用户有没有登录，如果没有登录先重定向到登录；
+	    3、如果用户没有角色且设置了未授权页面（unauthorizedUrl），那么重定向到未授权页面；
+	           否则直接返回401 未授权错误码。
+* @author 李志勇
+* @date 2015年3月19日 下午12:03:32
+*
  */
 public class AnyRolesFilter extends AccessControlFilter {
 
@@ -33,6 +41,7 @@ public class AnyRolesFilter extends AccessControlFilter {
         return false;//跳到onAccessDenied处理
     }
 
+   
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         Subject subject = getSubject(request, response);

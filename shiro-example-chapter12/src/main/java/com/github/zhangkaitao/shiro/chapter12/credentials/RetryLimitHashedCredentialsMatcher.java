@@ -1,8 +1,10 @@
 package com.github.zhangkaitao.shiro.chapter12.credentials;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheManager;
@@ -35,7 +37,7 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
             //if retry count > 5 throw
             throw new ExcessiveAttemptsException();
         }
-
+//        boolean matches= SecurityUtils.getSubject().login(new UsernamePasswordToken(username, "123"));
         boolean matches = super.doCredentialsMatch(token, info);
         if(matches) {
             //clear retry count

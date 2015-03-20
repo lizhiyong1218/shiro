@@ -16,6 +16,12 @@ public class MyAccessControlFilter extends AccessControlFilter {
         System.out.println("access allowed");
         return true;
     }
+    
+    /**
+     * 表示访问拒绝时是否自己处理，
+     * 如果返回true 表示自己不处理且继续拦截器链执行，
+     * 返回false表示自己已经处理了（比如重定向到另一个页面）
+     */
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         System.out.println("访问拒绝也不自己处理，继续拦截器链的执行");

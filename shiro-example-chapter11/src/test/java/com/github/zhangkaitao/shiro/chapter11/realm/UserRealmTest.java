@@ -1,16 +1,10 @@
 package com.github.zhangkaitao.shiro.chapter11.realm;
 
-import com.github.zhangkaitao.shiro.chapter11.BaseTest;
-import junit.framework.Assert;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.ExcessiveAttemptsException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.mgt.RealmSecurityManager;
-import org.apache.shiro.subject.Subject;
-import org.junit.Before;
 import org.junit.Test;
+
+import com.github.zhangkaitao.shiro.chapter11.BaseTest;
 
 /**
  * <p>User: Zhang Kaitao
@@ -29,6 +23,13 @@ public class UserRealmTest extends BaseTest {
         super.tearDown();
     }
 
+	/**
+	 * 首先登录成功（此时会缓存相应的AuthenticationInfo），然后修改密码；此时密码就变了；
+	 * 接着需要调用Realm的clearCachedAuthenticationInfo方法清空之前缓存的AuthenticationInfo；
+	 * 否则下次登录时还会获取到修改密码之前的那个AuthenticationInfo；
+	 * @Title: testClearCachedAuthenticationInfo
+	 * @throws
+	 */
     @Test
       public void testClearCachedAuthenticationInfo() {
         login(u1.getUsername(), password);
@@ -58,6 +59,15 @@ public class UserRealmTest extends BaseTest {
 
 
 
+	/**
+	 * 
+	 * @Title: testClearCache
+	 * @Description: 
+	 * 同时调用clearCachedAuthenticationInfo和clearCachedAuthorizationInfo，
+	 * 清空AuthenticationInfo和AuthorizationInfo。 
+	 * void
+	 * @throws
+	 */
     @Test
     public void testClearCache() {
         login(u1.getUsername(), password);

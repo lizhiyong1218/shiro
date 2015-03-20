@@ -1,8 +1,8 @@
 package com.github.zhangkaitao.shiro.chapter3.permission;
 
-import com.alibaba.druid.util.StringUtils;
-import junit.framework.Assert;
 import org.apache.shiro.authz.Permission;
+
+import com.alibaba.druid.util.StringUtils;
 
 /**
  *  规则

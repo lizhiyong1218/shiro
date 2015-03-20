@@ -1,4 +1,4 @@
-package com.github.zhangkaitao.shiro.chapter8.web.filter;
+package com.github.zhangkaitao.shiro.chapter12.web.filter;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -9,6 +9,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 
 /**
@@ -70,6 +71,7 @@ public class FormLoginFilter extends PathMatchingFilter {
             SecurityUtils.getSubject().login(new UsernamePasswordToken(username, password));
         } catch (Exception e) {
             req.setAttribute("shiroLoginFailure", e.getClass());
+            System.err.println(e);
             return false;
         }
         return true;
