@@ -18,7 +18,7 @@
     </context:component-scan>
 
     <!-- 开启AOP监听 只对当前配置文件有效 -->
-    <aop:aspectj-autoproxy expose-proxy="true"/>
+    <aop:aspectj-autoproxy />
 
 
     <!-- 数据源 -->
@@ -75,7 +75,7 @@
         </tx:attributes>
     </tx:advice>
 
-    <aop:config expose-proxy="true" proxy-target-class="true">
+    <aop:config   proxy-target-class="true">
         <!-- 只对业务逻辑层实施事务 -->
         <aop:pointcut id="txPointcut" expression="execution(* com.github.zhangkaitao.shiro.chapter22..service..*+.*(..))"/>
         <aop:advisor id="txAdvisor" advice-ref="txAdvice" pointcut-ref="txPointcut"/>

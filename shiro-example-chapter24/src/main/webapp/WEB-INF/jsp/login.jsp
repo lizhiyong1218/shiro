@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div class="error">${error}</div>
+<div class="error">2222222${error}</div>
 <form action="" method="post">
     用户名：<input type="text" name="username" value="<shiro:principal/>"><br/>
     密码：<input type="password" name="password"><br/>
